@@ -1,6 +1,7 @@
 import os
 
 import pymysql
+import os
 from dotenv import load_dotenv
 
 from sql_utils import run_sql_file
@@ -11,12 +12,13 @@ class Database:
         """
             Chargez les variables d'environnement de votre fichier .env, puis complétez les lignes 15 à 19 afin de récupérer les valeurs de ces variables
         """
+        load_dotenv()
 
-        self.host =
-        self.port =
-        self.database =
-        self.user =
-        self.password =
+        self.host = os.getenv("HOST")
+        self.port = int(os.getenv("PORT"))
+        self.database = os.getenv("DATABASE")
+        self.user = os.getenv("USER")
+        self.password = os.getenv("PASSWORD")
 
         self._open_sql_connection()
 
